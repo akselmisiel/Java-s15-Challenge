@@ -376,7 +376,7 @@ public class LibraryApplication {
         libraryService.addBook(book10);
 
         Reader reader1 = new Reader("Aksel", 100);
-        Reader reader2 = new Reader("mehmet", 45);
+        Reader reader2 = new Reader("emre", 45);
         libraryService.addReader(reader1);
         libraryService.addReader(reader2);
 
