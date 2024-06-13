@@ -1,7 +1,6 @@
 package com.library;
 
 import com.library.enums.Category;
-import com.library.enums.Status;
 import com.library.model.*;
 import com.library.service.*;
 import com.library.utility.ValidationUtil;
@@ -98,7 +97,7 @@ public class LibraryApplication {
                         System.out.println("Enter book ID: ");
                         int bookID = scanner.nextInt();
                         scanner.nextLine();
-                        if (!ValidationUtil.isValidId(bookID)) {
+                        if (!ValidationUtil.isValidId(bookID) || libraryService.getBookById(bookID) != null) {
                             System.out.println("Invalid book ID. Please try again.");
                             break;
                         }
@@ -354,12 +353,16 @@ public class LibraryApplication {
 
     private static void initializeLibrary(LibraryService libraryService) {
         // Initialize some books (10)
-        Book book1 = new Book(3, new Author("George Orwell"), "1984", 15.0 ,Category.FICTION);
-        Book book2 = new Book(4, new Author("J.K. Rowling"), "Harry Potter and the Philosopher's Stone", 20.0, Category.FANTASY);
-        Book book3 = new Book(5, new Author("Stephen Hawking"), "A Brief History of Time", 25.0, Category.NON_FICTION);
-        Book book4 = new Book(6, new Author("Haruki Murakami"), "Norwegian Wood", 18.0, Category.FICTION);
-        Book book5 = new Book(7, new Author("J.R.R. Tolkien"), "The Hobbit", 22.0, Category.FANTASY);
-        Book book6 = new Book(8, new Author("Yuval Noah Harari"), "Sapiens", 30.0, Category.NON_FICTION);
+        Book book1 = new Book(1, new Author("George Orwell"), "1984", 15.0 ,Category.FICTION);
+        Book book2 = new Book(2, new Author("J.K. Rowling"), "Harry Potter and the Philosopher's Stone", 20.0, Category.FANTASY);
+        Book book3 = new Book(3, new Author("J.R.R. Tolkien"), "The Hobbit", 22.0, Category.FANTASY);
+        Book book4 = new Book(4, new Author("Anton Çehov"), "Altıncı Koğuş", 30.0, Category.FICTION);
+        Book book5 = new Book(5, new Author("Stefan Zweig"), "Chess", 10.0, Category.FICTION);
+        Book book6 = new Book(6, new Author("Yuval Noah Harari"), "Sapiens", 30.0, Category.HISTORY);
+        Book book7 = new Book(7, new Author("Yuval Noah Harari"), "21 Lessons for the 21st Century", 30.0, Category.NON_FICTION);
+        Book book8 = new Book(8, new Author("Stefan Zweig"), "Fear", 10.0, Category.NON_FICTION);
+        Book book9 = new Book(9, new Author("Arthur Conan Doyle"), "Sherlock: A Study in Pink", 20.0, Category.FICTION);
+        Book book10 = new Book(10, new Author("J.K. Rowling"), "Harry Potter and the Chamber of Secrets", 20.0, Category.FANTASY);
 
         libraryService.addBook(book1);
         libraryService.addBook(book2);
@@ -367,14 +370,16 @@ public class LibraryApplication {
         libraryService.addBook(book4);
         libraryService.addBook(book5);
         libraryService.addBook(book6);
+        libraryService.addBook(book7);
+        libraryService.addBook(book8);
+        libraryService.addBook(book9);
+        libraryService.addBook(book10);
 
-        // Initialize some readers
         Reader reader1 = new Reader("Aksel", 100);
         Reader reader2 = new Reader("mehmet", 45);
         libraryService.addReader(reader1);
         libraryService.addReader(reader2);
 
-        // Initialize a librarian
         Librarian librarian1 = new Librarian("Doğancan");
         libraryService.addLibrarian(librarian1);
     }

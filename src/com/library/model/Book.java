@@ -120,7 +120,7 @@ public class Book implements Borrowable, Purchasable{
     @Override
     public void purchaseBook(Reader reader) {
         if (reader.getBalance() >= price) {
-            owner = reader;
+            //owner = reader;
             reader.addPurchasedBook(this);
             reader.deductBalance(price);
             System.out.println(reader.getName() + " purchased the book: " + title);
