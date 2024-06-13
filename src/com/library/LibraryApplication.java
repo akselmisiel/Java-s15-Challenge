@@ -70,7 +70,7 @@ public class LibraryApplication {
 
         while (isLoggedIn) {
             System.out.println("Library Management System");
-            System.out.printf("------------------------------\n");
+            System.out.println("------------------------------");
             if (currentUser instanceof Reader) {
                 System.out.println("Balance: " + ((Reader) currentUser).getBalance());
             }

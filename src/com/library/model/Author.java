@@ -21,7 +21,7 @@ public class Author extends Person{
 
     public void showBooks() {
         for (Book book : this.books) {
-            System.out.println(book.getTitle());
+            System.out.println("-> " + book.getTitle());
         }
     }
 
